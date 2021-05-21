@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <style>
+        li {
+            margin: 5px;
+        }
+        .bg-aqua {background-color: aqua;}
+        .bg-yellow {background-color: yellow;}
+
+        .red { color : red;}
+        .green { color : green;}
+        .blue { color : blue;}
+
+        .horizontal {
+            float: left;
+            list-style: none;
+            margin : 10px;
+        }
+        .clear { clear : both;}
+        /* float처리 했던 거를 clear */
+        
+        .sizeUp { font-size: 1.5em; }
+        .bold { font-weight: bold; }
+    </style>
+    <script>
+        //jQuery 사용으로 문서(document) 준비된 후
+        $(function(){
+            //------------------1-------------
+            // 요소(element) 선택자(요소명=태그명) : 해당 태그 선택
+            //li 태그 찾고, 배경색을 노란색으로 변경
+            // $("li").css("background-color", "yellow");
+            //반복문 안 돌려도 된다 --css메소드에 다 구현이 되어있음!
+            $("li").css("background-color", "aquamarine");
+            //나중에 설정한 게 먹음 !!! \
+
+            //------------------2-------------
+            //클래스명 추가 : addClass() 메소드 사용
+            $("li").addClass("bg-aqua");
+            //검사로 확인해보면 class = "bg-aqua" 추가되어있음
+
+            //클래스, id 추가하고 해도 inline 방식을 못 이김!!!
+            //가중치에서 inline이 훨 높아버림!(직접 설정하는 거)
+
+            //------------------3-------------
+            //클래스 선택(.) : 해당 클래스명 가진 요소 선택
+            $(".js").addClass("red");
+
+            //------------------4-------------
+            //아이디 선택(#) : 해당 아이디명 가진 요소 선택
+            $("#jsp").addClass("red");
+            //--------------------------
+
+            //자식, 자손 태그 컨트롤 
+            //자식 선택(>) : 하위 자녀 요소 선택 
+            $("ul>li").addClass("horizontal");
+            $("hr").addClass("clear");
+            //뒤에도 영향을 미치기 때문에 hr에 clear 처리 해줌
+
+            //자손(빈 칸) : 부모태그 + 빈칸 + 찾을 태그
+            // ==>자손 요소 선택
+            //어디에 있건 자손이면 된다 
+
+            $('div p').addClass("sizeUp");
+            $('div>p').addClass("bold");
+            $('div>div>p').addClass("blue");
+            //자식과 자손 차이 ! 자손은 span 거친 애들도 다 포함
+        });
+        //가장 심플한 방식
+    </script>
+</head>
+<body>
+    <ul>
+        <li>Java</li>
+        <li>HTML5 &amp; CSS</li>
+        <li class="js">JavaScript &amp; jQuery</li>
+        <li id="jsp">Servlet &amp; JSP</li>
+    </ul>
+    <hr>
+    <ol>
+        <li>Java</li>
+        <li>HTML5 &amp; CSS</li>
+        <li class="js">JavaScript &amp; jQuery</li>
+        <li>Servlet &amp; JSP</li>
+    </ol>
+    <hr>
+    <div>
+        <p>div 밑에 있는-p태그</p>
+        <div>
+            <span>
+                <p>div-div-span-p태그</p>
+            </span>
+            <span>div-div-span태그</span>
+            <div>
+                <p>div-div-p태그</p>
+            </div>
+        </div>
+        <p>div-p태그</p>
+    </div>
+
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

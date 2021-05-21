@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jq 사용 방식</title>
+    <!-- jQuery import 방식 1 -->
+    <!-- <script src="js/jquery-3.6.0.min.js"></script> -->
+
+    <!-- jQuery import 방식 2 (CDN 방식) 인터넷 제공문서 사용-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <!-- 버전별로 가져와서 쓰면 된다. -->
+    <!-- but, 네트워크 연결이 꼭 되어있어야 한다!! -->
+
+    <script>
+        //JavaScript DOM 객체 다루기
+        window.onload = function(){
+            document.getElementById("id1").style.color = "hotpink";
+        };
+        //--------------------------
+        //제이쿼리(jQuery) 사용방식 3가지
+        //방식1 : jQuery(documment).ready(function(){};) 
+        // jQuery 대신 $ 사용 가능
+        jQuery(document).ready(function(){
+            jQuery("#id1").css("background-color","lightgreen");
+        });
+        $(document).ready(function(){
+            $("#id1").css("border", "3px solid navy");
+        });
+
+        //----------------
+        //방식2 : $().ready(function(){}); --document생략 가능
+        $().ready(function(){
+            $("#id1").css("background-color","lightyellow");
+        }); // 위에도 백그라운드 설정해줬지만 맨 아래껄로 적용된다
+
+        //----------------
+        //방식3 : $(function(){});
+        $(function(){
+            $("#id1").css("background-color","powderblue")
+        });
+    </script>
+</head>
+<body>
+    <h1 id="id1">제이쿼리(jQuery)</h1>
+<script>
+    //jQuery 방식으로 사용해보기
+    $("#id1").css("border", "1px solid gray");
+    //import 안 해주면 못 쓴다!!_!!
+</script>
+
+
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
