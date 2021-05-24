@@ -30,7 +30,10 @@
         //=============
         //AND, OR 조건 형태로 속성값 찾기
         //AND -- [][]:적용요건
-        $("a[href^='mailto'][href*='naver']").
+        $("a[href^='mailto'][href*='naver']").addClass("bg_green");
+
+        //OR -- [],[]
+        $("a[href^='mailto'],[href*='daum']").addClass("bg_red");
 
        })
     </script>
@@ -42,8 +45,8 @@
         .c_blue { color : blue;}
         .c_green { color : green;}
         
-        .bg_red {background-color: red;}
         .bg_green {background-color: green;}
+        .bg_red {background-color: red;}
 
         .sizeup { font-size : 1.5rem; }
 
