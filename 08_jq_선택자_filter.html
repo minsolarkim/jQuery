@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>선택자 filter</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //filter(선택자) : 선택자 매칭되는 jQuery 객체
+        //end() : 이전 상태로 되돌아감
+        $(document).ready(function(){
+            // $("img").css("border", "1px solid red");
+            // $("img").filter("[title *= 'JSP']").css("border-width", "5px");
+            // $("img").filter("[title $= 'a']").css("border-width", "10px");
+            // $("img").filter("[title ^= 'Sp']").css("border-width", "15px");
+
+            // $("img").addClass("red_border");
+            // $("img").filter("[title *= 'JSP']").addClass("bd-width5");
+            // $("img").filter("[title $= 'a']").addClass("bd-width10");
+            // $("img").filter("[title ^= 'Sp']").addClass("bd-width15");
+
+            //removeClass() : 클래스명 삭제
+            // $("img").filter("[title ^= 'Sp']").removeClass("bd-width15");
+
+            //jQuery 객체를 변수에 저장해서 재사용(권장 - 객체생성 최소화)
+            // $imgs = $("img"); //변수명 앞에 $ 사용 - jQuery 객체 저장 변수 의미
+            // $imgs.addClass("red_border");
+            // $imgs.filter("[title *= 'JSP']").addClass("bd-width5");
+            // $imgs.filter("[title $= 'a']").addClass("bd-width10");
+            // $imgs.filter("[title ^= 'Sp']").addClass("bd-width15");
+            //이렇게 해야 찾는 작업 덜 하고 수정하기에도 편리하다 (?)
+            // $imgs.filter("[title ^= 'Sp']").removeClass("bd-width15");
+            // $imgs.filter("[title ^= 'Sp']").css("border","15px solid blue");
+
+            //이걸 체이닝 방식으로도 작성 가능
+            $("img").addClass("red_border")
+                .filter("[title *= 'JSP']").addClass("bd-width5")
+                .end() //end() 필터링 이전 상태로 되돌아감
+                .filter("[title $= 'a']").addClass("bd-width10").end()
+                .filter("[title ^= 'Sp']").addClass("bd-width15").end()
+                .filter("[title ^= 'Sp']").removeClass("bd-width15").end()
+                .filter("[title ^= 'Sp']").css("border","15px solid blue")
+            ;   
+            //체이닝방식으로 할 때는 end()를 써줘야 이전으로 돌아갈 수 있다
+            //쓸 수 있다! 이 정도지 권장하고 그런 건 아님 (알아만 두기)
+
+
+
+        });
+
+       
+        
+    </script>
+    <style>
+        .red_border { border: 1px solid red;}
+        .bd-width5{ border-width: 5px;}
+        .bd-width10{ border-width: 10px;}
+        .bd-width15{ border-width: 15px;}
+    </style>
+</head>
+<body>
+    <img src="#" title="JSP" alt="JSP">
+    <img src="#" title="Java" alt="Java">
+    <img src="#" title="Spring" alt="Spring">
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

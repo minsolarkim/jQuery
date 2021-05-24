@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        /* (실습) : 행과 열 값을 읽어서 테이블 만들기.
+        val() 메소드 :
+        1. 클릭이벤트 연결
+        2. input 태그값 일어오기(행, 열)
+        3. 행, 열 값에 맞추어 table 태그 생성
+        4. 원하는 위치(#myDiv)에 table 태그 추가
+        */
+
+        $(function(){
+            // $("#myDiv").each(function(idx, element){
+            //     console.log(">> idc: " + idx + ", $(this.html(): "+ $(this).html());
+
+            //     //id
+            //     $(this).prop("id", "para-" + idx);
+            //     console.log(">> idx: " + idx + ", $(this.html(): "+ $(this).html());
+
+            // });
+            $("#btn").click(function(){
+                var row = $("#row").val();
+                console.log("#row text : " + row);
+                var col = $("#col").val();
+                console.log("#col text : " + col);
+
+                var myTable = "<table>";
+                    // <thead>
+                    myTable += "<thead>";
+                        myTable += "<tr>"
+                        for(let h=0; h<col; h++){
+                            myTable += "<th>" + "항목" + (h+1) + "</th>";
+                        }
+                        myTable += "</tr>";        
+                    myTable += "</thead>";
+
+                    //<tbody>
+                    myTable += "<tbody>";
+                        for(let i =0; i<row; i++){
+                            myTable += "<tr>";
+                                for(let j=0; j<col; j++){
+                                myTable += "<td>" + "데이터" + (i+1) +", " + (j+1) + "</td>";
+                                }
+                            myTable += "</tr>";
+                        }
+                    myTable += "</tbody>";
+                    
+                    myTable += "</table>";
+                $("#myDiv").html(myTable);
+            });
+        });
+
+    </script>
+
+    <style>
+        table { 
+            border : 1px solid black;
+            border-collapse: collapse;
+            }
+        th, td{ border : 1px solid black;}
+        th { background-color: gray;}
+        #myDiv {background-color: yellow;}
+    </style>
+</head>
+<body>
+    <h2>테이블 동적 생성</h2>
+    <input type="text" id="row" siza="5" value="2">행 &nbsp;
+    <input type="text" id="col" siza="5" value="3">열 &nbsp;
+    <button id="btn">테이블 생성</button>
+    <hr>
+    <div id="myDiv">
+        동적으로 테이블 생성할 영역(n행)
+
+    </div>
+    <hr>
+    <div>
+        <h3>참고 (th)제외하고, 2행 3열 테이블</h3>
+        <table border>
+            <thead>
+                <tr>
+                    <th>항목1</th>
+                    <th>항목2</th>
+                    <th>항목3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>데이터 1,1</td>
+                    <td>데이터 1,2</td>
+                    <td>데이터 1,3</td>
+                </tr>
+                <tr>
+                    <td>데이터 2,1</td>
+                    <td>데이터 2,2</td>
+                    <td>데이터 2,3</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
