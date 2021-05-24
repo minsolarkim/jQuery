@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //jQuery import 방식
+        //1. 다운받아서 파일 불러오기 느낌 scr = .js
+        //2. CDN방식 인터넷 제공문서 사용 scr = "http .js"
+
+        //JS DOM 객체 다루기
+        window.onload = function(){
+            document.getElementById("id1").style.color = "hotpink";
+        };
+        //---------------------
+        //제이쿼리 사용방식 3가지
+        //방식-1- jQuery(document).ready(function(){};)
+        //jQuery 대신 $ 사용 가능
+        jQuery(document).ready(function(){
+            jQuery("#id1").css("background-color", "lightgreen");
+        });
+        $(document).ready(function(){
+            $("#id1").css("border","3px solid black");
+        });
+
+        //방식-2- $().ready(function(){ }); --document 생략 가능
+        $().ready(function(){
+            $("#id1").css("background-color", "lightyellow");
+        })
+
+        //방식-3-  $(function(){});
+        $(function(){
+            $("#id1").css("background-color", "powderblue");
+        })
+        
+    </script>
+</head>
+<body>
+    <h1 id="id1"> 제이쿼리 (jQuery) </h1>
+    
+    <script>
+        $("#id1").css("border", "1px solid gray");
+    </script>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

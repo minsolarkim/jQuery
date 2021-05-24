@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>선택자 속성</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        /* 요소(element)의 속성값 접근 --- []안에 속성
+        태그명[속성명] : 해당 속성이 있는 요소
+        태그명[속성명=값] : 속성값 일치
+        태그명[속성명!=값] : 속성값 아닌 요소
+        태그명[속성명^=값] : 속성값으로 ^ㅣ작하는 요소
+        태그명[속성명$=값] : 속성값으로 끝$나는 요소
+        태그명[속성명*=값] : 속성값을 포함하고 있는 요소 *ㅗ함
+
+        "a[href='naver']"  따옴표와 대괄호 정리 잘하기 
+        ***/
+       $(function(){
+           //a태그에 href 속성이 있는 요소
+        $("a[href]").addClass("c_red");
+        $("a[href='naver']").addClass("c_orange");//정확히 일치
+        $("a[href!='naver']").addClass("c_silver");
+        $("a[href^='mail']").addClass("c_purple");
+        $("a[href$='com']").addClass("c_blue");
+        $("a[href*='naver']").addClass("c_green");
+
+        //아래있을 수록 가중치 높고 
+        //클래스나 아이디 지정보다 < 직접 css작성하는게 가중치 높다
+
+        //=============
+        //AND, OR 조건 형태로 속성값 찾기
+        //AND -- [][]:적용요건
+        $("a[href^='mailto'][href*='naver']").
+
+       })
+    </script>
+    <style>
+        .c_red { color : red;}
+        .c_orange { color : orange;}
+        .c_silver { color : silver;}
+        .c_purple { color : purple;}
+        .c_blue { color : blue;}
+        .c_green { color : green;}
+        
+        .bg_red {background-color: red;}
+        .bg_green {background-color: green;}
+
+        .sizeup { font-size : 1.5rem; }
+
+    </style>
+</head>
+<body>
+    <h2>jQuery 속성으로 찾아 클래스 추가</h2>
+    <a href = "http://www.naver.com">네이버</a>
+    <a href = "http://www.daum.net">다음</a>
+    <a href = "http://www.nate.com">네이트</a>
+    
+    <a>구글</a>
+    <a href = "naver">네이버(href ="naver")</a>
+
+    <a href="mailto:naver@naver.com">네이버메일</a>
+    <a href="mailto:daum@daum.net">다음메일</a>
+    <a href="mailto:nate@nate.com">네이트메일</a>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

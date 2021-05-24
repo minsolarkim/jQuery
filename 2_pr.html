@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>선택자 id class tag</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .sol { 
+            background-color: coral;
+            border : 2px dotted gray;
+            }
+        .red {
+            border : 3px solid red;
+        }
+        .navy {
+            border : 3px solid navy;
+        }
+        .gray {
+            border : 3px solid gray;
+        }
+        .clear { clear : both;}
+        /* float처리 했던 거를 clear */
+        /* 클리어는 하나쯤 해놓는 게 좋은 것 같당 */
+        .horizontal {
+            float: left;
+            list-style: none;
+            margin : 10px;
+        }
+    </style>
+    <script>
+        $(function(){
+            //-----------1-----------
+            // 요소 선택자(요소명= 태그명) : 해당 태그 선택
+            // li 태그 찾고 , 배경색을 노란색으로 변경
+            // $("li").css("backgrond-color","yellow");
+            $("li").css("background-color", "aquamarine");
+
+
+            //----------2------------
+            //클래스명 추가 : addClass() 메소드 사용
+            $("li").addClass("sol");
+            //ㄴ점 안 찍어도 되네??
+            //but style보다 --1--에서 inline으로 설정한 게 가중치 더 높음
+
+            //----------3-----------
+            //클래스 선택(.) : 해당 클래스명 가진 요소 선택
+            $(".js").addClass("red");
+            //ㄴ이렇게 선택할 때 . # 표기!!!!!! 
+            //addClass는 이미 클래스인 걸 알아서 클래스 이름만 적어주기
+
+            //---------4--------------
+            //아이디 선택(#)
+            $("#jsp").addClass("red");
+
+            //-------------------------------
+            //자식, 자손 태그 컨트롤
+            //자식 선택(>) : 하위 자녀 요소 선택
+            $("ul>li").addClass("horizontal");
+            $("hr").addClass("clear");
+
+            //자손(빈 칸) : 부모캐그 + 빈 칸 + 찾을 태그
+            //==> 자손 요소 선택
+            //어디에 있건 자손이면 된다
+            $("div p").addClass("sol");
+            $("div>p").addClass("navy");
+            $("div>div>p").addClass("gray");
+
+        })
+    </script>
+</head>
+<body>
+    <ul>
+        <li>Java</li>
+        <li>HTML5 &amp; CSS</li>
+        <li class = "js">JavaScript &amp; jQuery</li>
+        <li id="jsp">Servlet &amp; JSP</li>
+    </ul>
+    <hr>
+    <ol>
+        <li>Java</li>
+        <li>HTML &amp; CSS</li>
+        <li class="js">JavaScript &amp; jQuery</li>
+        <li>Servlet &amp; JSP</li>
+    </ol>
+    <hr>
+    <div>
+        <p>div 밑에 있는 p태그</p>
+        <div>
+            <span>
+                <p>div-div-span-p태그</p>
+            </span>
+            <span>div-div-span태그</span>
+            <div>
+                <p>div-div-p태그</p>
+            </div>
+        </div>
+        <p>div-p태그</p>
+    </div>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
