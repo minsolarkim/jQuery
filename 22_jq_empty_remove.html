@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            //민솔 혼자 해봄
+            // $("#myDiv").empty(); //내용만 사라짐
+            // $("#myDiv").remove(); // 태그 자체가 사라짐
+
+            //강사님
+            //---------------초기화----------------
+            $("#empty").click(function(){
+                // $("#myDiv").empty();
+                //empty()메소드를 모를 경우
+                $("#myDiv").html(""); // 빈 문자열
+            });
+
+            //---------------삭제----------------
+            $("#remove").click(function(){
+                $("#myDiv").remove();
+            });
+
+            //---------------추가----------------
+            //append() : 기준(선택)태그에 자녀 태그 추가
+            $("#append").click(function(){
+                $("#myDiv").append("<p>append 버튼으로 추가</p>");
+                
+            });
+            //empty하면 #myDiv가 남아있으므로 추가되지만
+            //remove하면 #myDiv가 사라지므로 선택 자체가 안된다.
+
+            //---------------수정----------------
+            //html() 로 수정
+            /***민솔
+            let htmlTag = "";
+            $("#html").click(function(){
+                // $("#myDiv").html("<p>html()메소드로 수정</p>");
+                //이렇게만 하면 한번밖에 안됨
+                htmlTag += "<p>html()메소드로 수정</p>";
+                $("#myDiv").html(htmlTag);
+            });
+            ***/
+            //html() : 기준(선택) 태그 내의 html 요소 읽기, 쓰기
+            $("#html").click(function(){
+                console.log($("#myDiv").html());
+                var htmlTag = $("#myDiv").html();
+                $("#myDiv").html(htmlTag + "<p>html()사용 추가</p>"); 
+            })
+        });
+    </script>
+    <style>
+        #myDiv { 
+            border: 2px solid blue; 
+            height : 200px;
+        }
+        p {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <button id="empty">초기화(empty)</button>
+    <button id="remove">삭제(remove)</button>
+
+    <button id="append">추가(append)</button>
+    <button id="html">수정(html()이용)</button>
+    <hr>
+    <div id="myDiv">
+        <p>Java</p>
+        <p>HTML</p>
+        <p>CSS</p>
+    </div>
+    <hr>
+    <h2>div 다음에 있는 h2태그</h2>
+    
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

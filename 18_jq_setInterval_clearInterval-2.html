@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>타이머객체 (다시 봐야함)</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        var subject = ["Java", "HTML", "CSS", "JavaScript", "jQuery"];
+        var index = 0 ; // 계속 변할 인덱스 필요
+        var timer = null; //초기값 null 넣어서 빼내구요
+
+        //jQuery 방식으로 이벤트 연결
+        $(document).ready(function(){
+            $("#startJQ").click(start);//함수 start
+            $("#stopJQ").click(stop);//함수 stop
+        });
+
+        function start(){
+                console.log("function start() 실행");
+                //타이머객체가 없으면 생성 (그치만 우린 위에 있음)
+                if(timer == null){ //null이면=true가 아니면=undefined면
+                    timer = setInterval(fnDisplaySubject, 1000);
+                    //setInterval(콜백함수, 간격 시간);
+                }
+                console.log("timer : " + timer);
+            }
+
+            function fnDisplaySubject(){
+                $("#myDiv").html(subject[index++]);
+                //index++; 이거를 이 안에서 증가처리 해줘도 됨==사용 후 1 증가처리
+                if(index >= subject.length) {
+                    index = 0;
+                }
+            }
+
+            function stop(){
+            console.log("function stop() 실행");
+            clearInterval(timer);
+            timer = null;
+            }
+
+            //JavaScript 사용 이벤트 연결 처리 (JS로 이렇게 할 수 있다)
+            window.onload = function(){
+                console.log(">>> window.onload 실행~~~");
+                var startJS = document.getElementById("startJS");
+                var stopJS = document.getElementById("stopJS");
+                //startJS.onclick = start;
+                startJS.addEventListener("click", start);
+                stopJS.addEventListener("click", stop);
+            }
+
+    </script>
+</head>
+<body>
+    <button id="startJQ">목록보여주기(JQ 이벤트 연결)</button>
+    <button id="stopJQ">중지(JQ 이벤트 연결)</button>
+    <hr>
+    <!-- HTML에서 이벤트 연결 -->
+    <button onclick="start()">목록보여주기(HTML 이벤트연결-인라인방식)</button>
+    <button onclick="stop()">중지(HTML 이벤트연결-인라인방식)</button>
+    <p>Java, HTML, CSS, JavaScript, jQuery</p>
+    <hr>
+    <div id="myDiv">Java</div>
+
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

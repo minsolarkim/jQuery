@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //append()-뒤, prepend()-앞 메소드 사용
+        //next, prev 클릭시 : 이미지를 3개식 이동 (3번 반복?!)
+        $(function(){
+            //(실습)  next 클릭시 다음 이미지 3개 표시(이동)
+            //next 버튼 : 맨 앞의 이미지를 맨 뒤로 보내기(append() 사용)
+            $("#next").click(function(){
+                //---------방법1----------
+                for(let i=0; i<3; i++){
+                    $("#imgUl").append($("#imgUl>li").first());
+                }
+                
+                //---------방법2-----------
+                //앞에서 3개 선택하고 맨 뒤에 붙이기
+                // $("#imgUl").css("border","1px solid black");//확인
+                // $("#imgUl").append($("#imgUl>li:nth-child(-n+3)"));
+                //이렇게도 가능
+            });
+
+            //(실습)  prev 클릭시 다음 이미지 3개 표시(이동)
+            //prev 버튼 : 맨 뒤의 이미지를 맨 앞으로 보내기 (prepend() 사용)
+            $("#prev").click(function(){
+                //---------방법1----------
+                for(let i=0; i<3; i++){
+                    $("#imgUl").prepend($("#imgUl>li").last());
+                }
+
+                //---------방법2-----------
+                //뒤에서 3개 선택 : nth-last-child(-n+3);
+                $("#imgUl").prepend($("#imgUl>li").last());
+            });
+        });
+    </script>
+    <style>
+        * { margin : 0; padding: 0;}
+        #simgs {
+            width: 528px;
+            height: 176px;
+            /* 이미지 3개 들어갈 사이즈 */
+
+            border: 1px solid gray;
+            position: relative;
+            left : 50px;
+            /* overflow: hidden; 흘러넘친 거를 안 보이게 처리 */
+        }
+        #simgs > ul { list-style: none;}
+        #simgs > ul > li {float: left;} /* 띄워서 좌측정렬 */
+        #simgs > a {
+            clear:both;
+            position: absolute;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background-color: yellowgreen;
+            /* 위치지정을 해줘야 보인다 */
+            top: 70px;
+
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        #prev { left: 0px; }
+        #next { right: 0px; }
+    </style>
+</head>
+<body>
+    <div id="simgs">
+        <ul id="imgUl">
+            <!-- li는 block이라 한 줄 다 차지 -->
+            <li><img src="images/simg01.jpg"></li>
+            <li><img src="images/simg02.jpg"></li>
+            <li><img src="images/simg03.jpg"></li>
+            <li><img src="images/simg04.jpg"></li>
+            <li><img src="images/simg05.jpg"></li>
+            <li><img src="images/simg06.jpg"></li>
+            <li><img src="images/simg07.jpg"></li>
+            <li><img src="images/simg08.jpg"></li>
+            <li><img src="images/simg09.jpg"></li>
+            <li><img src="images/simg10.jpg"></li>
+        </ul>
+        <a id="prev">&lt;&lt;</a>
+        <a id="next">&gt;&gt;</a>
+    </div>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

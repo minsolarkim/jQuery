@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>fadeIn, fadeOut</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            // hide();
+            $("button").eq(0).on("click", function(){ //eq(0) 첫번째 버튼
+                $("#car").hide("slow"); //slow fast 지정
+            });
+            // show();
+            $("button").eq(1).on("click", function(){
+                $("#car").show("fast");//slow fast 지정
+            });
+            // toggle(); == 클릭할 때 마다 hide & show 반복
+            $("button").eq(2).on("click", function(){
+                $("#car").toggle(2000);//밀리초 시간 지정
+
+                //toggle이 안돼요!!!!!!!!!!!ㅠㅠㅠㅠㅠㅠㅠㅠ
+                //아니다 또 눌러야 나타나는 거였음
+            });
+
+            //slideUp, slideDown, slideToggle
+            $("button").eq(3).on("click", function(){
+                $("#car").slideUp("slow");//slow fast 지정
+            });
+            $("button").eq(4).on("click", function(){
+                $("#car").slideDown("fast");//slow fast 지정
+            });
+            $("button").eq(5).on("click", function(){
+                $("#car").slideToggle(2000);//밀리초 시간 지정
+            });
+
+            //fadeOut, fadeIn, fadeToggle
+            $("button").eq(6).on("click", function(){
+                $("#car").fadeOut("slow");//slow fast 지정
+            });
+            $("button").eq(7).on("click", function(){
+                $("#car").fadeIn("fast");//slow fast 지정
+            });
+            $("button").eq(8).on("click", function(){
+                $("#car").fadeToggle(2000);//밀리초 시간 지정
+            });
+
+            //fadeTo -- 서서히 바뀐다~~!!
+            $("button").eq(9).on("click", function(){
+                $("#car").fadeTo(2000, 0);//(밀리초, opacity) 시간 지정
+            });
+            $("button").eq(10).on("click", function(){
+                $("#car").fadeTo(2000, 0.2);//(밀리초, opacity) 시간 지정
+            });
+            $("button").eq(11).on("click", function(){
+                $("#car").fadeTo(2000, 0.6);//(밀리초, opacity) 시간 지정
+            });
+            $("button").eq(12).on("click", function(){
+                $("#car").fadeTo(2000, 1);//(밀리초, opacity) 시간 지정
+            });
+
+
+            //++ 수정씨가 알려줌 #car 대신 div넣으면 더 슬라이드 느낌
+            $("button").eq(3).on("click", function(){
+                $("div").slideUp("slow");//slow fast 지정
+            });
+            $("button").eq(4).on("click", function(){
+                $("div").slideDown("fast");//slow fast 지정
+            });
+            $("button").eq(5).on("click", function(){
+                $("div").slideToggle(2000);//밀리초 시간 지정
+            });
+
+        });
+    </script>
+    <style>
+        div { border : 2px solid black; } 
+    </style>
+</head>
+<body>
+    <button>감추기(hide)</button>
+    <button>보이기(show)</button>
+    <button>toggle(2000)(2초 동안)</button>
+    <hr>
+    <button>위로 숨기기(slideUp)</button>
+    <button>아래로 나타나기(slideDown)</button>
+    <button>slideToggle(2000)(2초 동안)</button>
+    <hr>
+    <button>사라지기(fadeOut))</button>
+    <button>나타나기(fadeIn)</button>
+    <button>fadeToggle(2000)(2초 동안)</button>
+    <hr>
+    <button>fadeTo(2000, 0)(시간, opacity num))</button>
+    <button>fadeTo(2000, 0.2)(시간, opacity num))</button>
+    <button>fadeTo(2000, 0.6)(시간, opacity num))</button>
+    <button>fadeTo(2000, 1)(시간, opacity num))</button>
+    <hr>
+    <div>
+        <img id="car" src="images/car1.jpg" alt="자동차">
+    </div>
+    <hr>
+    <p>안녕하세요~ 반갑습니다.</p>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

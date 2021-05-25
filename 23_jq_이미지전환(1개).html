@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>이미지전환</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //prev, next 버튼이 클릭되었을 때 처리
+        //prev: 이전 이미지 표시, net : 다음 이미지 표시
+        $(document).ready(function(){
+            var imgNum = 1;
+            //next 버튼 클릭시 : 다음 이미지 표시(img 태그 src값 변경)
+            $("#next").click(function(){
+                imgNum++;
+                if(imgNum > 10){
+                    imgNum = 1; //10초과이면 첫번째 이미지로 이동
+                }
+                if(imgNum < 10){
+                    imgNum = "0" + imgNum;
+                }
+                $("img").prop("src", "images/bimg"+imgNum+".jpg");
+                console.log($("img").prop("src"));
+                //prev 버튼 클릭시 이전 이미지 표시(img 태그 src값 변경)
+            });
+            $("#prev").click(function(){
+                imgNum--;
+                imgNum = (imgNum < 10) ? "0" + imgNum : imgNum;
+                //if문과 같은 효과 (삼항)
+                if(imgNum < 1){
+                    imgNum = 10;
+                }
+                $("img").prop("src", "images/bimg"+imgNum+".jpg");
+                console.log($("img").prop("src"));
+                //언제 이상이 발견되는 지 알고싶으면 console.log출력
+            });
+        });
+    </script>
+    <style>
+        div {
+            width : 320px;
+            margin: 0 auto;
+            position: relative;
+        }
+        div > a {
+            /* 위치 지정 */
+            position: absolute;
+            top : 150px; left :20px;
+
+            /* 모양 지정 */
+            width: 50px; height: 40px;
+            background-color: lightgreen;
+            border-radius: 25% ;
+            border: 2px solid white;
+
+            /* 텍스트 설정 */
+            text-decoration: none;
+            text-align: center;
+            line-height: 40px; /* height값과 같이 주면 가운데로 옴 */
+        }
+        #next {
+            left:250px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="images/bimg01.jpg" alt="상품이미지">
+        <a id="prev" href="#">prev</a>
+        <a id="next" href="#">next</a>
+    </div>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

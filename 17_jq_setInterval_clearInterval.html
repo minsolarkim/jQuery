@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>타이머객체</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Java, HTML, CSS, JavaScript, jQuery 문자열을 배열에 저장
+        // 1초마다 순차적으로 #myDiv 위치에 출력
+        // 맨 마지막꺼까지 했으면 다시 되둘아와서 첫번째꺼 실행
+        $(document).ready(function(){ //document 전체 ready되면 function() 실행
+            var subject = ["Java", "HTML", "CSS", "JavaScript", "jQuery"];
+            var index = 0 ; // 계속 변할 인덱스 필요
+            var timer = setInterval(function(){
+                //콘솔창에 먼저 출력해보기
+                console.log(index + " : " + subject[index]);
+
+                //#myDiv 위치에 출력
+                $("#myDiv").html(subject[index]);
+
+                index++;
+
+                //index값이 5일때부터 문제 발생
+                //index가 배열의 크기와 같거나 크면 0으로 초기화
+                if(index >= subject.length){
+                    //같으면-- 이라고 해도되긴 하는데 
+                    //같거나 크면-- 이라고 해야 프로그램이 더 안정성 있다
+                    index = 0;
+                }
+            }, 1000); //1초마다
+
+            //중지버튼이 눌러지면 과목 보여주기 정지 처리
+            $("#stop").click(function(){
+                console.log(">>> 타이머 동작 정지!!");
+                clearInterval(timer);
+            });
+        })
+
+    </script>
+</head>
+<body>
+    <button id="stop">중지</button>
+    <!-- Java, HTML, CSS, JavaScript, jQuery -->
+    <div id="myDiv">Java</div>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
