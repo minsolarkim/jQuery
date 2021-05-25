@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>nth-child</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $("ul").css("background-color","powderblue");
+                // .css("border","2px solid black");
+            $("ul>li").css("border","1px solid black")
+                .css("margin","5px");
+            // $("ul>li:first").css("background-color","lightyellow");
+            // $("ul>li:last").css("background", "coral");
+            
+
+            //-------even&odd--------
+            // $("ul>li:even").css("background","gray");
+            // $("ul ol :odd").css("background","white");
+
+            //--------:nth-child-------
+            // $("ul>li:nth-child(1)").css("background-color","navy");
+            // $("ul>li:first-child").css("background-color","navy");
+
+            // $("ul>li:last-child").css("background","gray");
+
+            //:nth-child(2n)
+            // $("ul>li:nth-child(2n)").css("background","gray");
+            // $("ul>li:nth-child(2n+1)").css("background","coral");
+
+            // $("ul>li:nth-child(3n+1)").css("background","gray");
+
+            //----------slice()는 메소드----------------
+            // $("ul>li").slice(1).css("background","yellow");
+
+            // $("ul>li").slice(2,4).css("background","gray");
+
+            //--------자녀필터링-------------
+            // $("ul:first").css("border","2px solid black");
+            // $("ul:first").children().css("border","2px solid black");
+            // $("ul:first").children(":first").css("background","gray");
+            // $("ul:first").children(":first").next().css("background","pink");
+
+            // $("ul:first").children(":last").css("background","hotpink");
+            // $("ul:first").children(":last").prev().css("background","orange");
+
+            $("h1, h1+ul>li:eq(2)").css("background-color","gray");
+            $(".li3").css("background-color","gray");
+            
+                
+
+
+
+        });
+    </script>
+</head>
+<body>
+    <h1>제이쿼리 선택자</h1>
+    <ul>
+        <li>menu 1</li>
+        <li>menu 2</li>
+        <li class="li3">menu 3
+            <ol>
+                <li>sub 1</li>
+                <li>sub 2</li>
+            </ol>
+        </li>
+        <li>menu 4</li>
+        <li>menu 5</li>
+    </ul>
+
+    <hr>
+    <ul>
+        <li>menu 2 - 1</li>
+        <li>menu 2 - 2</li>
+        <li class="li3">menu 2 - 3</li>
+    </ul>
+
+
+
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

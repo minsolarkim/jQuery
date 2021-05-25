@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>has, not</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $("ol>li:contains('strong')").css("border","2px dashed blue");
+            $("ol>li").has("strong").css("font-size","1.5rem");
+
+            // $("ol>li").not(":eq(1)").css("background","yellow");
+            $("ol>li:not(:eq(2))").css("background","yellow");
+        });
+    </script>
+</head>
+<body>
+    <h1>목차</h1>
+    <ol>
+        <li>menu 1 - strong</li>
+        <li>menu 1 <em>2</em></li>
+        <li>menu 3</li>
+        <li><strong>menu 4</strong>
+            <ul>
+                <li>menu 4-1</li>
+                <li>menu 4-2 <a href="http://www.naver.com">link</a></li>
+            </ul>
+        </li>
+    </ol>
+    <ul>
+        <li>번호 1</li>
+        <li>번호 2</li>
+        <li>번호 3</li>
+    </ul>
+
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
