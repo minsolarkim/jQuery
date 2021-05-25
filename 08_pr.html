@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>선택자 filter</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //filter(선택자) : 선택자 매칭되는 jQuery 객체
+        //end() : 이전 상태로 되돌아감
+        //쓸 수 있다! 이 정도지 권장하고 그런 건 아님 (알아만 두기)
+
+        $(document).ready(function(){
+            $("[title='JSP']").css("border","2px solid red");
+            $("[alt='Java']").css("border","5px solid red");
+            $("[title='Spring']").css("border","15px solid blue").end();
+            // 다양한 방법으로 찾아보려고 했으나 실패....
+            // var $title = $("img").prop("title");
+            // $title.css("border","15px solid blue");
+        });
+    </script>
+</head>
+<body>
+    <img src="#" title="JSP" alt="JSP">
+    <img src="#" title="Java" alt="Java">
+    <img src="#" title="Spring" alt="Spring">
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
