@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>animate취소_clearQueue </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //Queue는 단이라고 생각하면 됨 (순차적으로)
+        // FIFO    --->>>  4 3 2 1  --->>> 
+
+        $(function(){
+            $("#run").click(function(){
+                $("h1").animate({ "margin-left" : "+=300px"}, 2000)
+                        .animate({"margin-left": "0"}, 2000);
+                        //이렇게 하면 동작1 실행하고 나서 동작2 실행
+                        //갈 때 stop시키면 대기하고 있던 동작2 바로 실행
+            });
+
+            //stop 처리 (1번)
+            $("#stop").click(function(){
+                $("h1").stop(); // 진행 중 동작 멈춤
+            });
+
+            //두 번 연속 stop 처리 (2번)
+            $("#stopstop").click(function(){
+                $("h1").stop().stop(); //두 번 stop 처리
+            });
+            
+            //but, 작업이 몇개가 있을 지 모름..!
+            // 1. 모든 작업을 취소하고 싶다 ==> clearQueue + stop
+            // 2. 실행하던 건 하고 queue에 대기하는 것들만 취소하고 싶다 ==> clearQueue
+            
+            $("#clearQueue").click(function(){
+                $("h1").clearQueue();
+            });
+
+            $("#clearQueueStop").click(function(){
+                $("h1").clearQueue().stop();
+            });
+
+            //stop 처리 (한 번) + 큐 작업 취소 == clearQueue+stop과 같은 효과
+            $("#stopTrue").click(function(){
+                $("h1").stop(true);
+            });
+
+        });
+    </script>
+    <style>
+        /* h1 { margin-left: 300px; } 
+            ㄴ이걸로 먼저 확인*/
+    </style>
+</head>
+<body>
+    <button id="run">run</button>
+    <button id="stop">stop</button>
+    <button id="stopstop">stopstop</button>
+    <button id="clearQueue">clearQueue</button>
+    <button id="clearQueueStop">clearQueue + stop</button>
+    <button id="stopTrue">stopTrue</button>
+
+    <h1>abcde</h1>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><qbr><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

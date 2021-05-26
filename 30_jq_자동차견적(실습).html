@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jq 자동차견적</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #carZone {
+            width: 600px;
+            margin: auto; /*중앙 정렬*/
+            border : 1px solid gray;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+        }
+        #car {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #car th, #car td {
+            border : 1px solid black;
+            text-align: center;
+        }
+        #car thead {
+            background-color: gray;
+        }
+        #totalTxt {
+            background-color: gray;
+
+        }
+        #total {
+            border : none;
+            text-align: center;
+            font-size: 1.5rem;
+            background-color: coral;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    <script>
+        //-------------------------------민솔--------------------------------
+        // let totalValue;
+        // $(function(){
+        //     totalValue = parseInt($("#total").val());
+        //     console.log("totalValue : "+totalValue );
+        //     // $("#opt1").click(function(){
+
+        //     //         console.log("op1 클릭!!!");
+        //     //         var val1 = parseInt($(this).val());
+        //     //         console.log("val1 : "+val1 )
+
+        //     //         if(opt1.checked){
+        //     //             totalValue += val1;
+        //     //         }else{
+        //     //             totalValue -= val1;
+        //     //         }
+        //     //         console.log("totalValue : "+totalValue );
+        //     //         $("#total").val(totalValue);
+        //     //     });
+        //     //옵션 1 -> i
+        //     var val = new Array();
+        //     var opt = new Array();
+        //     for(let i = 1; i<=3; i++){
+        //         $("#opt"+i).click(function(){
+        //             console.log("opt"+i+" 클릭!!!");
+        //             val[i] = parseInt($(this).val());
+        //             console.log("val"+i+" : "+val[i] )
+        //             if(this.checked){
+        //                 totalValue += val[i];
+        //             }else{
+        //                 totalValue -= val[i];
+        //             }
+        //             console.log("totalValue : "+totalValue );
+        //             $("#total").val(totalValue);
+        //         });
+        //     }
+        // });
+
+            //-------------------------------강사님--------------------------------
+            //(실습)jQuery 사용해서 자동차 견적내기
+            //기본차량가액 + 체크된 금액 일괄 합산
+            var initValue;
+            $().ready(function(){
+                //기본차량가액 구하기 -- 이건 변하지 않음
+                initValue = parseInt($("#total").val());
+
+                //checkbox 이벤트 연결
+                $(".opt").click(fnComputeOptionAll);
+                //.opt 클래스로 제어하는 구나!!
+                // 이래서 하나할 때는 id , 비슷한 여러개 지정할 때는 class 사용
+            });
+            
+            //function으로 빼주고 위에 콜백함수를 대체해준다
+            function fnComputeOptionAll(){
+                let total = initValue;
+                    //체크박스 중 체크된 것만 찾아서 금액 합산하기 
+                    // console.log('$(".opt:checked") : '+ $(".opt:checked")); 잘 찾아지고 있는지 확인
+                    $(".opt:checked").each(function(){ 
+                        //JS는 .checked이고 //jQ는 :checked인 거 기억하기
+                        console.log("this.id : " + this.id);
+                        // total += parseInt(this.value); // 이거는 JS
+                        total += Number($(this).val()); // 이게 jQuery
+                        //Number() = parseInt() 인가 보오
+                        console.log("total : " + total);
+                    });
+                    $("#total").val(total);
+            }
+       
+    </script>
+
+</head>
+<body>
+    <div id="carZone">
+        <h1>자동차 견적</h1>
+        <p><img src="images/car1.jpg" alt="자동차이미지" ></p>
+
+        <table id="car">
+            <colgroup>
+                <col width="50%">
+                <col width="30%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>옵션</th>
+                    <th>추가가격</th>
+                    <th>선택여부</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>인조가죽시트</td>
+                    <td>300,000</td>
+                    <td>
+                        <input type="checkbox" value="300000" id="opt1" class = "opt"> 
+                        <!-- onclick을 넣어버리는 inline 방식도 있다 -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>네비게이션</td>
+                    <td>400,000</td>
+                    <td>
+                        <input type="checkbox" value="400000" id="opt2" class = "opt">
+                    </td>
+                </tr>
+                <tr>
+                    <td>썬루프</td>
+                    <td>500,000</td>
+                    <td>
+                        <input type="checkbox" value="500000" id="opt3" class = "opt">
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td id="totalTxt">차량금액(옵션포함)</td>
+                    <td colspan="2" >
+                        <input type="text" value="20000000" id="total" >
+                    </td>
+                    <!-- 컬럼 두개 합해졌으니까 colspan -->
+                </tr>
+            </tfoot>
+        </table>
+
+
+
+
+    </div>
+    
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

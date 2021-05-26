@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>롤링배너 - animate()처리</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //라이브러리가 많기 때문에 직접 만든다기 보다, 가져다가 쓴다
+        
+        //처리 할 때는 overflow : hidden; 주석처리 해주고 코드 짜기
+        
+        $(document).ready(function(){
+            var $list = $("#banner"); //ul을 움직이게 하는 거다
+            //이미지 복사 & 붙여넣기 : 첫번째, 
+            $list.append($("#banner>li:lt(3)").clone()); //less than 3개
+            //clone을 해줘야되는 이유가 뭐였더라.?!!
+
+            var clickCnt = 0;
+            //이걸 만드는 이유 : 언제 이상이 생기는 지 알 수 있게 하려고
+            $("#next").click(function(){
+                console.log("clickCnt : "+clickCnt); //얘도 마찬가지
+                if( clickCnt >=5 ){
+                    $list.css("margin-left", "0px");
+                    clickCnt = 0; //맨 앞으로 리셋!!!
+                }
+
+                clickCnt++;
+                // $list.animate({"margin-left": "-=200px"});
+                $list.animate({"margin-left": -200 * clickCnt + "px"},1000);
+            });
+            //overflow : hidden 주석 제거 해주기
+            //이렇게 하면 굉장히 자연스럽게 돌아간다
+
+            //(실습) 이전(prev) 버튼 클릭에 대한 처리
+            $("#prev").click(function(){
+                console.log("clickCnt : " + clickCnt);
+                if(clickCnt<=0){
+                    clickCnt = 5;
+                    $list.css("margin-left", -200 * clickCnt + "px");
+                }
+                clickCnt--;
+                $list.animate({"margin-left" : -200 * clickCnt + "px"},1000);
+            })
+
+            //(하고싶음) <<, >> 버튼 해서 맨앞, 맨뒤로 가기
+
+        });
+    </script>
+    <style>
+        * {
+            margin : 0; padding: 0;
+        }
+        h2 { text-align: center;}
+        #banner-wrap {
+            width: 600px;
+            border : 2px solid #aaa;
+            padding : 20px;
+            margin: 50px auto;
+        }
+        #frame {
+            width: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+        #banner { width : 3000px;}
+        li img { width: 200px;}
+        li {
+            list-style: none;
+            float : left;
+            width : 200px;
+        }
+        #banner-wrap p { 
+            clear : both; 
+            text-align :center;
+        }
+    </style>
+</head>
+<body>
+    <h2>롤링 슬라이드 배너 만들기</h2>
+    <hr>
+    <div id="banner-wrap">
+        <div id="frame">
+            <ul id="banner">
+                <li><a href="#"><img src="images/1.png"></a></li>
+                <li><a href="#"><img src="images/2.png"></a></li>
+                <li><a href="#"><img src="images/3.png"></a></li>
+                <li><a href="#"><img src="images/4.png"></a></li>
+                <li><a href="#"><img src="images/5.png"></a></li>
+            </ul>
+        </div>
+        <p>
+            <a href="#" id="prev">
+                <img src="images/prev_btn.png">
+            </a>
+            <span>이동하기</span>
+            <a href="#" id="next">
+                <img src="images/next_btn.png">
+            </a>
+        </p>
+    </div>
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
